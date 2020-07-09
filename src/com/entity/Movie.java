@@ -11,20 +11,21 @@ public class Movie {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Movie(String  name) {
-		
-		this.name=name;
-		 
+	public Movie(String  name) {		
+		this.name=name;		 
 	}
 	
 	
 public int getId() {
 	return id;
-}public String getName() {
+}
+public String getName() {
 	return name;
-}public void setId(int id) {
+}
+public void setId(int id) {
 	this.id = id;
-}public void setName(String name) {
+}
+public void setName(String name) {
 	this.name = name;
 }
 

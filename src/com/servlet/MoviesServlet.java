@@ -16,7 +16,7 @@ import com.entity.*;
 /**
  * Servlet implementation class MoviesServlet
  */
-@WebServlet("/moviesservlet")
+@WebServlet("/movies")
 public class MoviesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -33,9 +33,8 @@ public class MoviesServlet extends HttpServlet {
 	    //pageContext.setAttribute("movies", movies);
 		
 		// Here
-		HttpSession session = request.getSession();
-		
-		session.setAttribute("movies", movies);
+		request.setAttribute("movies", movies);
+		request.getRequestDispatcher("movies.jsp").forward(request, response);
 		
 		
 		
