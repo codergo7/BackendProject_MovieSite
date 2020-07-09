@@ -18,7 +18,7 @@
 	
 	<c:forEach items="${movies}" var="movie">
     	
-    	<c:out value="${movie.name}"></c:out><br/>   
+    	<c:out value="${movie}"></c:out><br/>   
 	</c:forEach>
 
 </body>
