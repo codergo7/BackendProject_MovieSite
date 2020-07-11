@@ -8,7 +8,7 @@ public class Category {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Category(String  name, int id) {
+	public Category(int id, String  name ) {
 		this.id=id;
 		this.name=name;
 	}

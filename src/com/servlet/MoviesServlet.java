@@ -2,6 +2,9 @@ package com.servlet;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,29 +27,33 @@ public class MoviesServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
-		
-		ArrayList<Movie> movies = new MovieDao().getAllMovies();
-	    //pageContext.setAttribute("movies", movies);
-		
-		// Here
-		request.setAttribute("movies", movies);
-		request.getRequestDispatcher("movies.jsp").forward(request, response);
-		
-		
-		
-		//Here
-		
-		
+		Map<String, String> filteredParameters = new LinkedHashMap<>();
+        filteredParameters.put("name", "");
+        filteredParameters.put("directorId", "");
+        filteredParameters.put("categoryId", "");
+        filteredParameters.put("year", "");
+       
+       
+        //ArrayList<Movie> movies = new MovieDao().getAllMovies();
+        
+        //ArrayList<Movie> movies = new MovieDao().getMoviesByCategory(4);
+        
+        Map<String, String[]> parameters = request.getParameterMap();
+       
+        parameters.forEach((k, v) -> {
+            System.out.println("parameter" + " " + k);
+            if(filteredParameters.keySet().contains(k)) {
+                filteredParameters.put(k, v[0]);
+            }
+        });
+        
+       ArrayList<Movie> movies = new MovieDao().getMoviesByFilters(filteredParameters);
+        
+	   request.setAttribute("movies", movies);
+	   request.getRequestDispatcher("movies.jsp").forward(request, response);	
 		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
