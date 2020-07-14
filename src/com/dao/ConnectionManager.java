@@ -1,10 +1,9 @@
 package com.dao;
+
 import java.sql.*;
 
 public class ConnectionManager {
-	
-	
-	
+
 	public static Connection getConnection() {
 		Connection conn = null;
 		try {
@@ -17,14 +16,7 @@ public class ConnectionManager {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return conn;
-
-		
-		
 	}
-	
-	
-	
-
 }

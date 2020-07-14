@@ -1,69 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-
-<head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-
-<style type="text/css">
-
-body{
-    display: grid;
-    grid-template-rows: 2fr 5fr 1fr;
-    height: 720px;
-    width: 1500px;
-
-}
-
-#header{
-display: grid;
-grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-}
-#container{
-display: grid;
-grid-template-columns: 3fr 1fr ;
-}
-#footer{
-display: grid;
-grid-template-columns: 5fr 1fr 1fr 1fr;
-}
-
-div{
-    /*border: thin dashed black;*/
-}
-
-</style>
+	pageEncoding="ISO-8859-1"%>
+<%@ page import="com.dao.CategoryDao"%>
+<%@ page import="java.util.ArrayList"%>
+<%@ page import="com.entity.Category"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 
-</head>
 
-<body>
-   
-<div id="header">
-    <div>LOGO</div>
-    <div>SPACE</div>
-	<div><a href="/MoviesSite/movies"> click here for selected movies list</a></div>
-	<div>Link2</div>
-	<div>Link3</div>
-</div>
+<jsp:include page="header.jsp" />
+
 
 <div id="container">
-	<div >
-	
-	<jsp:include page="movies.jsp"/>
+	<div>
+		<jsp:include page="movies.jsp" />
 	</div>
-	<div>Form</div>
-</div>
-
-<div id="footer">
-    <div>Space</div>
-    <div>Abut Us</div>
-	<div>Android View</div>
-	<div>Contact</div>
-</div>
 
 
-</body>
-</html>
+	<jsp:include page="movie_category.jsp" />
+
+	<jsp:include page="footer.jsp" />

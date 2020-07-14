@@ -24,37 +24,42 @@ public class MoviesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		Map<String, String> filteredParameters = new LinkedHashMap<>();
-        filteredParameters.put("name", "");
-        filteredParameters.put("directorId", "");
-        filteredParameters.put("categoryId", "");
-        filteredParameters.put("year", "");
-       
-       
-        //ArrayList<Movie> movies = new MovieDao().getAllMovies();
-        
-        //ArrayList<Movie> movies = new MovieDao().getMoviesByCategory(4);
-        
-        Map<String, String[]> parameters = request.getParameterMap();
-       
-        parameters.forEach((k, v) -> {
-            System.out.println("parameter" + " " + k);
-            if(filteredParameters.keySet().contains(k)) {
-                filteredParameters.put(k, v[0]);
-            }
-        });
-        
-       ArrayList<Movie> movies = new MovieDao().getMoviesByFilters(filteredParameters);
-        
-	   request.setAttribute("movies", movies);
-	   request.getRequestDispatcher("movies.jsp").forward(request, response);	
-		
+		filteredParameters.put("name", "");
+		filteredParameters.put("directorId", "");
+		filteredParameters.put("categoryId", "");
+		filteredParameters.put("year", "");
+
+		// ArrayList<Movie> movies = new MovieDao().getAllMovies();
+
+		int id = Integer.valueOf(request.getParameter("categoryId"));
+
+		// ArrayList<Movie> movies = new MovieDao().getMoviesByCategory(id);
+
+		Map<String, String[]> parameters = request.getParameterMap();
+
+		parameters.forEach((k, v) -> {
+			System.out.println("parameter" + " " + k);
+			if (filteredParameters.keySet().contains(k)) {
+				filteredParameters.put(k, v[0]);
+			}
+		});
+
+		ArrayList<Movie> movies = new MovieDao().getMoviesByFilters(filteredParameters);
+
+		request.setAttribute("movies", movies);
+		// request.getRequestDispatcher("movies.jsp").forward(request, response);
+		request.getRequestDispatcher("movies.jsp").forward(request, response);
+
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}

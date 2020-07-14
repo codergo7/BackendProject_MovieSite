@@ -1,4 +1,3 @@
-
 <%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <%@page import="com.dao.MovieDao"%>
 <%@page import="com.dao.*"%>
@@ -9,14 +8,20 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <% 
-ArrayList<Movie> movies = new MovieDao().getAllMovies();
-request.setAttribute("movies", movies);
+ArrayList<Category> categories = CategoryDao.getAllCategories();
+request.setAttribute("categories", categories);
 %>
 
-</br>
-<h3>Movies List</h3>
+<div>
+	<h2>Movie Categories</h2>
+	</br>
 
-<c:forEach items="${movies}" var="movie">
-	<a href="moviedetail?id=${movie.id}">${movie.name }</a>
-	<br />
-</c:forEach>
+	<c:forEach items="${categories}" var="category">
+		<a href="moviesbycategory?categoryId=${category.id}">
+			${category.name}</a>
+		</br>
+	</c:forEach>
+
+</div>
+</div>
+
