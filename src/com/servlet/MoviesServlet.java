@@ -16,17 +16,12 @@ import javax.servlet.http.HttpSession;
 import com.dao.*;
 import com.entity.*;
 
-/**
- * Servlet implementation class MoviesServlet
- */
+
 @WebServlet("/movies")
 public class MoviesServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
+	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Map<String, String> filteredParameters = new LinkedHashMap<>();
@@ -60,7 +55,7 @@ public class MoviesServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		doGet(request, response);
 	}
 

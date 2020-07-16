@@ -7,10 +7,11 @@
 
 
 
+
 <jsp:include page="header.jsp" />
 
-
 <div id="container">
+
 	<div>
 		<jsp:include page="movies.jsp" />
 	</div>

@@ -17,7 +17,7 @@
 			<a href="index.jsp">HOME</a>
 		</div>
 
-		<div>
+		<div id="login">
 
 			<c:if test="${not empty user}">
 				<p>Welcome ${user}</p>
@@ -40,8 +40,37 @@
 				</form>
 			</c:if>
 		</div>
+			
 		
-		<div>LOGO</div>
+		<div>
+			<!-- <c:if test="${not empty message}">
+				<p>${message}</p>
+				<a href="logout"><input type="button" value="Log out" /></a>
+
+			</c:if> -->
+
+			
+			<form action="sign_up" method="post">
+					<table>
+						<tr>
+							<td>User: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="user" /></td>
+						</tr>
+						<tr>
+							<td>Password: <input type="password" name="pass" /></td>
+						</tr>	
+						<tr>	
+							<td>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&nbsp;<input type="submit" value="Sign Up" /></td>
+						</tr>
+					</table>
+					<c:if test="${not empty alreadyExist}"> 
+						<h4 style="color: red;">${alreadyExist}</h4>
+					</c:if>
+					<c:if test="${not empty successfullyRegistered}">
+						<h4 style="color: blue;">${successfullyRegistered}</h4>
+					</c:if>
+				</form>
+			
+		</div>
 		
 		<div>
 			<a href="index.jsp">TEMPLATE</a>
